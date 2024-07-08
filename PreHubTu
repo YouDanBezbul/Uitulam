@@ -1,0 +1,136 @@
+-- Hàm để tạo GUI
+local function createGUI()
+    -- Kiểm tra và xóa GUI cũ nếu tồn tại
+    local existingGUI = game.Players.LocalPlayer.PlayerGui:FindFirstChild("MyCustomGUI")
+    if existingGUI then
+        existingGUI:Destroy()
+    end
+
+    -- Tạo ScreenGui mới
+    local screenGui = Instance.new("ScreenGui")
+    screenGui.Name = "MyCustomGUI"
+    screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+    -- Tạo Frame chính
+    local mainFrame = Instance.new("Frame")
+    mainFrame.Size = UDim2.new(0.4, 0, 0.8, 0)
+    mainFrame.Position = UDim2.new(0.3, 0, 0.1, 0)
+    mainFrame.BackgroundTransparency = 1
+    mainFrame.BorderSizePixel = 0
+    mainFrame.ClipsDescendants = false
+    mainFrame.Parent = screenGui
+
+    -- Tạo Frame đỏ mới
+    local redFrame = Instance.new("Frame")
+    redFrame.Size = UDim2.new(0.50, 0, 0.07, 0)
+    redFrame.Position = UDim2.new(0.1, 0, 1, 0)
+    redFrame.BackgroundColor3 = Color3.new(1, 0, 0)
+    redFrame.BorderSizePixel = 0
+    redFrame.ZIndex = 0
+    redFrame.Parent = mainFrame
+
+    local redCorner = Instance.new("UICorner")
+    redCorner.CornerRadius = UDim.new(0, 20)
+    redCorner.Parent = redFrame
+
+    -- Tạo Frame xám
+    local grayFrame = Instance.new("Frame")
+    grayFrame.Size = UDim2.new(0.25, 0, 1, 0)
+    grayFrame.Position = UDim2.new(0, 0, 0, 0)
+    grayFrame.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+    grayFrame.BorderSizePixel = 0
+    grayFrame.ZIndex = 1
+    grayFrame.Parent = mainFrame
+
+    local grayCorner = Instance.new("UICorner")
+    grayCorner.CornerRadius = UDim.new(0.2, 2)
+    grayCorner.Parent = grayFrame
+
+    -- Tạo Frame trắng
+    local whiteFrame = Instance.new("Frame")
+    whiteFrame.Size = UDim2.new(0.75, 0, 1, 0)
+    whiteFrame.Position = UDim2.new(0.25, 0, 0, 0)
+    whiteFrame.BackgroundColor3 = Color3.new(1, 1, 1)
+    whiteFrame.BorderSizePixel = 0
+    whiteFrame.ZIndex = 1
+    whiteFrame.Parent = mainFrame
+
+    local whiteCorner = Instance.new("UICorner")
+    whiteCorner.CornerRadius = UDim.new(0.05, 0)
+    whiteCorner.Parent = whiteFrame
+
+    -- Tạo Frame vàng mới
+    local yellowFrame = Instance.new("Frame")
+    yellowFrame.Size = UDim2.new(0.7, 0, 0.07, 0)
+    yellowFrame.Position = UDim2.new(0.27, 0, -0.07, 0)
+    yellowFrame.BackgroundColor3 = Color3.new(1, 1, 0)
+    yellowFrame.BorderSizePixel = 0
+    yellowFrame.ZIndex = 2
+    yellowFrame.Parent = mainFrame
+
+    local yellowCorner = Instance.new("UICorner")
+    yellowCorner.CornerRadius = UDim.new(1, 0)
+    yellowCorner.Parent = yellowFrame
+
+    -- Tạo hai frame để che góc bo tròn ở dưới
+    local bottomLeftCover = Instance.new("Frame")
+    bottomLeftCover.Size = UDim2.new(0.2, 0, 0.5, 0)
+    bottomLeftCover.Position = UDim2.new(0, 0, 0.5, 0)
+    bottomLeftCover.BackgroundColor3 = Color3.new(1, 1, 0)
+    bottomLeftCover.BorderSizePixel = 0
+    bottomLeftCover.Parent = yellowFrame
+
+    local bottomRightCover = Instance.new("Frame")
+    bottomRightCover.Size = UDim2.new(0.2, 0, 0.5, 0)
+    bottomRightCover.Position = UDim2.new(0.8, 0, 0.5, 0)
+    bottomRightCover.BackgroundColor3 = Color3.new(1, 1, 0)
+    bottomRightCover.BorderSizePixel = 0
+    bottomRightCover.Parent = yellowFrame
+
+    -- Các frame để che góc bo tròn ở giữa
+    local grayCoverCorner = Instance.new("Frame")
+    grayCoverCorner.Size = UDim2.new(0.2, 0, 1, 0)
+    grayCoverCorner.Position = UDim2.new(0.8, 0, 0, 0)
+    grayCoverCorner.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+    grayCoverCorner.BorderSizePixel = 0
+    grayCoverCorner.Parent = grayFrame
+
+    local whiteCoverCorner = Instance.new("Frame")
+    whiteCoverCorner.Size = UDim2.new(0.1, 0, 1, 0)
+    whiteCoverCorner.Position = UDim2.new(0, 0, 0, 0)
+    whiteCoverCorner.BackgroundColor3 = Color3.new(1, 1, 1)
+    whiteCoverCorner.BorderSizePixel = 0
+    whiteCoverCorner.Parent = whiteFrame
+
+    -- Tạo các frame để che góc trên của frame đỏ
+    local topLeftCover = Instance.new("Frame")
+    topLeftCover.Size = UDim2.new(0.1, 0, 0.5, 0)
+    topLeftCover.Position = UDim2.new(0, 0, 0, 0)
+    topLeftCover.BackgroundColor3 = Color3.new(1, 0, 0)
+    topLeftCover.BorderSizePixel = 0
+    topLeftCover.ZIndex = 1
+    topLeftCover.Parent = redFrame
+
+    local topRightCover = Instance.new("Frame")
+    topRightCover.Size = UDim2.new(0.1, 0, 0.5, 0)
+    topRightCover.Position = UDim2.new(0.9, 0, 0, 0)
+    topRightCover.BackgroundColor3 = Color3.new(1, 0, 0)
+    topRightCover.BorderSizePixel = 0
+    topRightCover.ZIndex = 1
+    topRightCover.Parent = redFrame
+    
+    local blueCircle = Instance.new("Frame")
+    blueCircle.Size = UDim2.new(0.4, 0, 0.11, 0)  -- Điều chỉnh kích thước nếu cần
+    blueCircle.Position = UDim2.new(0.05, 0, 0.01, 0)  -- Điều chỉnh vị trí nếu cần
+    blueCircle.BackgroundColor3 = Color3.new(0, 0, 1)  -- Màu xanh dương
+    blueCircle.BorderSizePixel = 0
+    blueCircle.ZIndex = 2
+    blueCircle.Parent = grayFrame
+
+    local circleCorner = Instance.new("UICorner")
+    circleCorner.CornerRadius = UDim.new(3, 0)  -- Làm cho frame trở thành hình tròn
+    circleCorner.Parent = blueCircle
+end
+
+-- Chạy hàm để tạo GUI
+createGUI()
